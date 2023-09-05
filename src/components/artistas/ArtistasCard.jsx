@@ -6,14 +6,13 @@ const ArtistasCard = (props) => {
     let { nombre, imagen } = props.data
     let id = props.data._id
 
-
     return (
         <>        
             <div className='artistas-card'>
                 <div className='mas-contenedor'>
                     <h3 className='artista-nombre'>{nombre}</h3>
                     <LinkRouter to={`/artistas/${id}`} style={{textDecoration: 'none'}}>
-                        <p className='mas'>Mas sobre {nombre}</p>
+                        <p className='mas banner'>Mas sobre {nombre}</p>
                     </LinkRouter>
                 </div>
                 <span className='span-image' style={{backgroundImage: `url(${imagen})`}}/>

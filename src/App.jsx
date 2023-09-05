@@ -1,5 +1,5 @@
 import './index.css';
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './layout/Layout'
@@ -13,32 +13,16 @@ import ArtistaDetalle from './pages/artistas/ArtistaDetalle';
 import ScrollToTop from './functions/ScrollToTop';
 import Carrito from "./pages/carrito/Carrito";
 import UserProfile from './pages/userProfile/UserProfile';
-import {getUserCart} from "./features/CarritoSlice";
-import {useAuth0} from "@auth0/auth0-react";
-import {useDispatch} from "react-redux";
 import Login from './pages/iniciarSesion/Login';
 import Signup from './pages/registrarse/Signup';
 import AuthGToken from './pages/iniciarSesion/AuthGToken';
 import VerifyEmail from './pages/iniciarSesion/VerifyEmail';
 import AdminProfile from './pages/admin/AdminProfile';
+import { ToTopButton } from './components/utils/buttons/ToTopButton';
+import { environment } from './environments';
 
 const App = () => {
-
-
-  const {isAuthenticated, user} = useAuth0()
-  const dispatch = useDispatch()
-
-
-  useEffect(() => {
-
-    isAuthenticated && dispatch(getUserCart(user.email))
-
-    return () => {
-
-    };
-  }, [isAuthenticated]);
-
-
+  console.log(environment)
   return (
     <div className='App'>
       <BrowserRouter>
@@ -60,6 +44,7 @@ const App = () => {
               <Route path='/auth' element={<AuthGToken/>}/>
               <Route path='/verifyemail' element={<VerifyEmail/>}/>
             </Routes>
+            <ToTopButton/>            
           </Layout>
       </BrowserRouter>
     </div>
